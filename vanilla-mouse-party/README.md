@@ -30,20 +30,7 @@ Let's begin by setting up a couple of environment variables. These will be varia
 
 ### Solution
 
-<details>
 
-<summary> <code> ./index.html </code> </summary>
-
-```js
-const mousePosition = { x: 0, y: 0 };
-let drawId;
-
-function getRandomNumber(min, max) {
-    return Math.round(Math.random() * (max - min + 1)) + min;
-};
-```
-
-</details>
 
 ## Step 2
 
@@ -79,25 +66,6 @@ In this step, we'll add a way for our application to `listen` for the mouse to m
 
 ### Solution
 
-<details>
-
-<summary> <code> ./index.html </code> </summary>
-
-```js
-const mousePosition = { x: 0, y: 0 };
-let drawId;
-
-const getRandomNumber = function(min, max) {
-  return Math.round(Math.random() * (max - min + 1)) + min;
-};
-
-window.addEventListener('mousemove', function(mouseMoveEvent) {
-  mousePosition.x = mouseMoveEvent.pageX;
-  mousePosition.y = mouseMoveEvent.pageY;
-});
-```
-
-</details>
 
 ## Step 3
 
@@ -146,56 +114,7 @@ In this step we'll take advantage of the built-in `setInterval` (more on that <a
 
 ### Solution
 
-<details>
-
-<summary> <code> ./index.html </code> </summary>
-
-```js
-const mousePosition = { x: 0, y: 0 };
-let drawId;
-
-const getRandomNumber = function(min, max){
-  return Math.round(Math.random() * (max - min + 1)) + min;
-}
-
-window.addEventListener("mousemove", function(e){
-  mousePosition.x = e.pageX;
-  mousePosition.y = e.pageY;
-});
-
-function draw(){
-  return setInterval(function() {
-    const container = document.getElementById("wrap");
-    const color = `background:rgb(${getRandomNumber(0, 255)},${getRandomNumber(
-      0,
-      255
-    )}, ${getRandomNumber(0, 255)});`;
-    const ballSize = getRandomNumber(10, 30);
-    const size = `height:${ballSize}px; width:${ballSize}px;`;
-    const left = `left:${getRandomNumber(
-      mousePosition.x - ballSize,
-      mousePosition.x
-    )}px;`;
-    const top = `top:${getRandomNumber(
-      mousePosition.y - ballSize,
-      mousePosition.y
-    )}px; `;
-    const style = `${left}${top}${color}${size}`;
-
-    const ball = document.createElement("div");
-    ball.classList.add("ball");
-    ball.style = style;
-
-    ball.addEventListener("animationend", function(e) {
-      e.target.remove();
-    });
-
-    container.appendChild(ball);
-  }, 50);
-}
-```
-
-</details>
+<
 
 ## Step 4
 
